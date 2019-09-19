@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2.Ejercicios</title>
+</head>
+<body>
+
+    <script>
+    
+    var num = prompt("Introduzca el numero deseado: ");
+    num *= num;
+    var aux;
+    var contador = 0;
+    do{
+    
+    while (num>0) {
+    var digito = num % 10;
+    num /= 10;
+
+    aux += (digito*digito);
+    contador ++;
+    }
+    
+    }while (aux == 1 || contador == 5 );
+    
+    document.write(aux);
+
+    </script>
+    
+</body>
+</html>

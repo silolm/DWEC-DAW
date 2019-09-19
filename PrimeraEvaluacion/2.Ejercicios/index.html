@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2.Ejercicios</title>
+</head>
+<body>
+
+    <script>
+    
+    var tamanyo = prompt("TAMANYO DEL ARRAY");
+    var insertarValor;
+    var array = [];
+
+    for (i = 0; i < tamanyo; i++) {
+        array.push (prompt("Introduzca el numero deseado: "));    
+    }
+
+
+    var numMAX = Number.MIN_VALUE;
+
+    for (i = 0; i < array.length; i++){
+        if (parseInt(array[i]) > parseInt(numMAX)) {
+            numMAX = array[i];
+        }
+    }
+
+    document.write(numMAX);
+
+    </script>
+    
+</body>
+</html>
