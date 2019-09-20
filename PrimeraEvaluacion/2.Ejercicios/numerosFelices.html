@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>2.Ejercicios</title>
 </head>
+
 <body>
 
     <script>
-    
-    var num = prompt("Introduzca el numero deseado: ");
-    num *= num;
-    var aux;
-    var contador = 0;
-    do{
-    
-    while (num>0) {
-    var digito = num % 10;
-    num /= 10;
+        
+        var num = parseInt(prompt("Introduzca el numero deseado: "));
+        var aux = 0;
+        var contador = 0;
+        var almacen = [];
+        var digito = 0;
 
-    aux += (digito*digito);
-    contador ++;
-    }
-    
-    }while (aux == 1 || contador == 5 );
-    
-    document.write(aux);
+        while (num > 0 && contador < 5) {
+
+            digito = parseInt(num) % 10;
+            console.log("digito: "+digito);
+
+            //num /= 10;
+            console.log("numero: "+num);
+
+            aux += (digito * digito);
+            console.log("aux: "+aux);
+            
+            almacen.push(aux);
+
+            num = (num - digito)/10;
+            
+            contador++;
+        }
+
+        console.table(almacen);
 
     </script>
-    
+
 </body>
+
 </html>
