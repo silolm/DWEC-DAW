@@ -10,6 +10,6 @@ export default class Libro {
     }
 
     toString(){
-        return this.título + this.autor;
+        return this.título + " "+ this.autor;
     }
 }

@@ -1,5 +1,5 @@
-import Libro from 'lib.js';
+import Libro from './lib.js';
 
-let miLibro = new Libro("POLLA", "MARIO");
+var miLibro = new Libro("POLLA", "MARIO");
 
 console.log(miLibro.toString());
