@@ -1,4 +1,4 @@
-var guardar;
+var guardar = "";
 
 function validarNombre(Nombre) {
     if (/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/.test(Nombre.value)) {
@@ -17,7 +17,7 @@ function validarCorreo(Correo) {
 }
 
 function validarDNI(DNI) {
-    if (/^[0-9]{8,8}[A-Za-z]$/.test(DNI.value)) {
+    if (/^(\d{8})([A-Z])$/.test(DNI.value)) {
         console.log("true");
     } else {
         DNI.style.backgroundColor = "red";
@@ -27,14 +27,13 @@ function validarDNI(DNI) {
 function validarContrasenya(Contrasenya) {
     if (/^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/.test(Contrasenya.value)) {
         console.log("true");
+        guardar = Contrasenya.value;
     } else {
         Contrasenya.style.backgroundColor = "red";
     }
-
-    Contrasenya = guardar;
 }
 
-function repetircontrasenya(Contrasenya) {
+function repetirContrasenya(Contrasenya) {
     if (guardar == Contrasenya) {
         console.log("true");
     } else {
@@ -42,3 +41,10 @@ function repetircontrasenya(Contrasenya) {
     }
 }
 
+function validarIP(IP) {
+    if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(IP.value)) {
+        console.log("true");
+    } else {
+        IP.style.backgroundColor = "red";
+    }
+}
