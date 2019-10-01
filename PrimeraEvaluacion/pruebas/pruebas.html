@@ -7,6 +7,7 @@
     <style>
         @import url(formulario.css);
     </style>
+    <script src="validador.js"></script>
 </head>
 
 <body>
@@ -16,19 +17,19 @@
     <fieldset>
         <legend>Formulario total</legend>
 
-        <input name="Nombre" onblur="" placeholder="Nombre" required type="text">
+        <input name="Nombre" onblur="validarNombre(this)" placeholder="Nombre" required type="text">
 
 
-        <input name="Apellidos" onblur="" placeholder="Apellidos " required type="text">
+        <input name="Apellidos" onblur="validarNombre(this)" placeholder="Apellidos " required type="text">
 
 
-        <input name="Correo" onblur="" placeholder="Correo electrónico" required type="text">
+        <input name="Correo" onblur="validarCorreo(this)" placeholder="Correo electrónico" required type="text">
 
 
-        <input name="DNI" onblur="" placeholder="DNI" required type="text">
+        <input name="DNI" onblur="validarDNI(this)" placeholder="DNI" required type="text">
 
 
-        <input name="Contraseña" onblur="" placeholder="Contraseña" required type="text">
+        <input name="Contraseña" onblur="validarContrasenya(this)" placeholder="Contraseña" required type="text">
 
 
         <input name="Repetir" onblur="" placeholder="Repetir contraseña" required type="text">
@@ -36,7 +37,7 @@
         <input name="IP" onblur="" placeholder="IP nodo" required type="text">
 
 
-        <input id="boton" onblur="" required type="submit" value="ENVIAR">
+        <input id="boton" onblur="" required type="button" value="ENVIAR">
 
     </fieldset>
 
