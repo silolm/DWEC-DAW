@@ -1,22 +1,50 @@
-form {
-    /* Sólo para centrar el formulario a la página */
-    margin: 0 auto;
-    width: 700px;
+body {
+    background-image: url("fondo.jpg");
+    background-size: 100vw 100vh;
+    background-attachment: fixed;
+    margin: 0;
+    font-family: monospace;
 }
 
-label {
-    /* Para asegurarse que todos los labels tienen el mismo tamaño y están alineados correctamente */
-    display: inline-block;
-    width: 90px;
-    text-align: right;
-    margin-top: 1em;
+form {
+    width: 450px;
+    margin: auto;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 7px;
+}
+
+legend {
+    color: white;
+    text-align: center;
+    margin: 0;
+    font-size: 30px;
+    margin-bottom: 20px;
 }
 
 input {
-    /* Para darle el mismo tamaño a todos los campos de texto */
-    width: 300px;
-    -moz-box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 7px;
     box-sizing: border-box;
-    /* Para armonizar el look&feel del borde en los campos de texto */
-    border: 2px solid #111111;
+    font-size: 17px;
+    border: none;
+}
+
+#boton {
+    background: orange;
+    color: white;
+    padding: 20px;
+}
+
+#boton:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 480px) {
+    form {
+        width: 100%;
+    }
+
 }

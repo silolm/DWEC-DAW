@@ -11,49 +11,36 @@
 
 <body>
 
-    <form autocomplete="on" method="post">
+<form autocomplete="on" method="post">
 
-        <fieldset>
-            <legend>Formulario total</legend>
+    <fieldset>
+        <legend>Formulario total</legend>
 
-            <div>
-                <label>Nombre: </label>
-                <input type="text" onblur="" required>
-            </div>
+        <input name="Nombre" onblur="" placeholder="Nombre" required type="text">
 
-            <div>
-                <label>Apellidos: </label>
-                <input type="text" required>
-            </div>
 
-            <div>
-                <label>Correo Electrónico: </label>
-                <input type="text" required>
-            </div>
+        <input name="Apellidos" onblur="" placeholder="Apellidos " required type="text">
 
-            <div>
-                <label>DNI: </label>
-                <input type="text" required>
-            </div>
 
-            <div>
-                <label>Contraseña: </label>
-                <input type="text" required>
-            </div>
+        <input name="Correo" onblur="" placeholder="Correo electrónico" required type="text">
 
-            <div>
-                <label>Repetir contraseña: </label>
-                <input type="text" required>
-            </div>
 
-            <div>
-                <label>IP Nodo: </label>
-                <input type="text" required>
-            </div>
+        <input name="DNI" onblur="" placeholder="DNI" required type="text">
 
-        </fieldset>
 
-    </form>
+        <input name="Contraseña" onblur="" placeholder="Contraseña" required type="text">
+
+
+        <input name="Repetir" onblur="" placeholder="Repetir contraseña" required type="text">
+
+        <input name="IP" onblur="" placeholder="IP nodo" required type="text">
+
+
+        <input id="boton" onblur="" required type="submit" value="ENVIAR">
+
+    </fieldset>
+
+</form>
 
 
 </body>
