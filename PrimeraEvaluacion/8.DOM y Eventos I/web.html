@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="web.js"></script>
+    <style>
+        @import "web.css";
+    </style>
+</head>
+<body>
+
+<div class="contenedor">
+
+    <div class="caja uno" data-polla="uno"  id="Roja" ondblclick="inShadow(this)" onmousedown="hiddeShadow(this)"
+         onmouseout="noCirculo(this)" onmouseover="circulo(this)" onmouseup="recoveryShadow(this)"></div>
+
+    <div class="caja dos" data-polla="dos"  id="Azul" ondblclick="inShadow(this)" onmousedown="hiddeShadow(this)"
+         onmouseout="noCirculo(this)" onmouseover="circulo(this)" onmouseup="recoveryShadow(this)"></div>
+
+    <div class="caja tres" data-polla="tres"  id="Verde" ondblclick="inShadow(this)" onmousedown="hiddeShadow(this)"
+         onmouseout="noCirculo(this)" onmouseover="circulo(this)" onmouseup="recoveryShadow(this)"></div>
+
+    <div class="caja cuatro" data-polla="cuatro"  id="Negra" ondblclick="inShadow(this)" onmousedown="hiddeShadow(this)"
+         onmouseout="noCirculo(this)" onmouseover="circulo(this)" onmouseup="recoveryShadow(this)"></div>
+
+</div>
+
+<br>
+
+<div class="botones">
+
+    <button class="eliminarCajaRoja uno" data-polla="uno" onclick="eliminar(this, 'Roja')" type="button">ELIMINAR</button>
+    <button class="eliminarCajaAzul dos" data-polla="dos" onclick="eliminar(this, 'Azul')" type="button">ELIMINAR</button>
+    <button class="eliminarCajaVerde tres" data-polla="tres" onclick="eliminar(this, 'Verde')" type="button">ELIMINAR</button>
+    <button class="eliminarCajaNegra cuatro" data-polla="cuatro" onclick="eliminar(this, 'Negra')" type="button">ELIMINAR</button>
+
+</div>
+
+</body>
+</html>
