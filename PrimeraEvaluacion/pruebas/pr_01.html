@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        #caja {
+            background-color: blueviolet;
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            document.getElementById("caja").addEventListener("click", clickEvent);
+        };
+
+        function clickEvent(evento) {
+            alert("hola")
+        }
+
+    </script>
 </head>
 <body>
+
+<div id="caja">
+
+    <div>
+
+    </div>
+
+</div>
+
 
 </body>
 </html>
