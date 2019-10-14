@@ -1,3 +1,5 @@
+// declaracion de variables
+
 let operador = false;
 let estaVacio = true;
 let esEntero = true;
@@ -5,7 +7,9 @@ let esParentesis = true;
 
 window.addEventListener('load', () => {
 
-    // relacionar eventos del HTML con las funciones
+    // relacionar eventos del HTML con las funciones.
+
+    // los FOR son para las clases debido a que captan un ARRAY de éstas.
 
     for (let boton of document.querySelectorAll(".operador")) {
         boton.addEventListener('click', () => {
@@ -18,15 +22,20 @@ window.addEventListener('load', () => {
         });
     }
 
-    document.getElementById("borradoTotal").addEventListener('click', borradoTotal);
+    // los GETelement son para los ID ya que solo captan un unico elemento.
 
+    document.getElementById("borradoTotal").addEventListener('click', borradoTotal);
     document.getElementById("borrar").addEventListener('click', eliminar);
 });
 
 function insertarOperador(caracter) {
     if (!operador) {
-        operador = true;
+        // añadimos a la screen el OPERADOR, puesto que el último dígito no es un operador.
         document.getElementById('screen').value += caracter;
+
+        // al añadir un OPERADOR cambiamos las variables de abajo para cumplir con las restricciones a la hora de escribir.
+        operador = true;
+        esEntero = true;
     }
 }
 
