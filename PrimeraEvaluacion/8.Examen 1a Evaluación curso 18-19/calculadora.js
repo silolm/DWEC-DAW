@@ -29,6 +29,22 @@ window.addEventListener('load', () => {
     document.getElementById("resultado").addEventListener('click', generarResultado);
 });
 
+
+window.addEventListener('keydown', (event) => {
+    if (/^[0-9]+$/.test(event.key) || /^[\-+*/%.^]+$/.test(event.key))
+        insertarNumero(event.key);
+
+    if (event.key === 'Enter')
+        generarResultado();
+
+    if (event.key === 'Escape')
+        borradoTotal();
+
+    if (event.key === 'Backspace')
+        eliminar();
+
+});
+
 function insertarOperador(caracter) {
     if (!operador) {
         let screen = document.getElementById('screen');
