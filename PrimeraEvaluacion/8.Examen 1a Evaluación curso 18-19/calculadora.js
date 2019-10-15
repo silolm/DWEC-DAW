@@ -27,6 +27,7 @@ window.addEventListener('load', () => {
     document.getElementById("borradoTotal").addEventListener('click', borradoTotal);
     document.getElementById("borrar").addEventListener('click', eliminar);
     document.getElementById("resultado").addEventListener('click', generarResultado);
+
 });
 
 
