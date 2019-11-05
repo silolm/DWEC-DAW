@@ -1,0 +1,26 @@
+#pantalla {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.tablero {
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
+    grid-template-rows: repeat(3, 150px);
+    background-color: black;
+    justify-items: center;
+    align-items: center;
+    border-radius: 5%;
+}
+
+.casilla {
+    width: 120px;
+    height: 120px;
+    background-color: rgba(240, 255, 240, 0.4);
+    border-radius: 20%;
+}
