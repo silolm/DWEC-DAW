@@ -24,3 +24,8 @@ h1 {
     background-color: rgba(240, 255, 240, 0.4);
     border-radius: 20%;
 }
+
+.X {
+    background-image: url("img/X.png");
+    background-size: 100% 100%;
+}

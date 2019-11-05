@@ -9,11 +9,20 @@ function crearMapa() {
             let div = document.createElement('div');
 
             div.classList.add('casilla');
+            div.addEventListener('click', click);
 
             mapa[i][j] = div;
             juego.appendChild(div);
         }
     }
-
 }
 crearMapa();
+
+
+function click(div) {
+
+    if (!this.classList.contains('X')) {
+        this.classList.add('X');
+    }
+
+}
