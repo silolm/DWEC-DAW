@@ -16,13 +16,26 @@ function crearMapa() {
         }
     }
 }
+
 crearMapa();
 
 
 function click(div) {
-
-    if (!this.classList.contains('X')) {
+    if (!this.classList.contains('X') && !this.classList.contains('O'))
         this.classList.add('X');
-    }
 
+    let movimientoOponente = false;
+
+    while (!movimientoOponente) {
+        let posY = Math.floor(Math.random() * 3);
+        let posX = Math.floor(Math.random() * 3);
+
+        if ()
+
+
+        if (!mapa[posY][posX].classList.contains("X") && !mapa[posY][posX].classList.contains("O")) {
+            mapa[posY][posX].classList.add("O");
+            movimientoOponente = true;
+        }
+    }
 }

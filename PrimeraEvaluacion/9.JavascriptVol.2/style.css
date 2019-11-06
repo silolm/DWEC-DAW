@@ -29,3 +29,8 @@ h1 {
     background-image: url("img/X.png");
     background-size: 100% 100%;
 }
+
+.O {
+    background-image: url("img/0.png");
+    background-size: 100% 100%;
+}
