@@ -19,23 +19,117 @@ function crearMapa() {
 
 crearMapa();
 
+function comprobarGanador() {
 
-function click(div) {
+    //HORIZONTAL
+
+    for (let i = 0; i < mapa.length; i++) {
+        let contadorX = 0;
+        let contadorO = 0;
+
+        for (let j = 0; j < mapa[i].length; j++) {
+            if (mapa[i][j].classList.contains('O'))
+                contadorO++;
+            else if (mapa[i][j].classList.contains('X'))
+                contadorX++;
+
+            if (contadorX === 3) {
+                alert('Ganaste');
+                document.querySelector('.tablero').innerHTML = '';
+                crearMapa();
+            } else if (contadorO === 3) {
+                alert('CPU WIN');
+                document.querySelector('.tablero').innerHTML = '';
+                crearMapa();
+            }
+        }
+    }
+
+    //VERTICAL
+
+    for (let i = 0; i < mapa.length; i++) {
+        let contadorX = 0;
+        let contadorO = 0;
+
+        for (let j = 0; j < mapa[i].length; j++) {
+            if (mapa[j][i].classList.contains('O'))
+                contadorO++;
+            else if (mapa[j][i].classList.contains('X'))
+                contadorX++;
+
+            if (contadorX === 3) {
+                alert('Ganaste');
+                document.querySelector('.tablero').innerHTML = '';
+                crearMapa();
+            } else if (contadorO === 3) {
+                alert('CPU WIN');
+                document.querySelector('.tablero').innerHTML = '';
+                crearMapa();
+            }
+        }
+    }
+
+    // DIAGONAL
+    let contadorXDiagX = 0;
+    let contadorXDiagO = 0;
+
+    for (let i = 0; i < 3; i++) {
+        if (mapa[i][i].classList.contains('O'))
+            contadorXDiagO++;
+        else if (mapa[i][i].classList.contains('X'))
+            contadorXDiagX++;
+
+        if (contadorXDiagX === 3) {
+            alert('Ganaste');
+            document.querySelector('.tablero').innerHTML = '';
+            crearMapa();
+        } else if (contadorXDiagO === 3) {
+            alert('CPU WIN');
+            document.querySelector('.tablero').innerHTML = '';
+            crearMapa();
+        }
+
+    }
+
+    contadorXDiagO = 0;
+    contadorXDiagX = 0;
+
+    for (let i = 0; i < 3; i++) {
+        if (mapa[i][2 - i].classList.contains('O'))
+            contadorXDiagO++;
+        else if (mapa[i][2 - i].classList.contains('X'))
+            contadorXDiagX++;
+
+        if (contadorXDiagX === 3) {
+            alert('Ganaste');
+            document.querySelector('.tablero').innerHTML = '';
+            crearMapa();
+        } else if (contadorXDiagO === 3) {
+            alert('CPU WIN');
+            document.querySelector('.tablero').innerHTML = '';
+            crearMapa();
+        }
+    }
+
+}
+
+function click() {
     if (!this.classList.contains('X') && !this.classList.contains('O'))
         this.classList.add('X');
 
     let movimientoOponente = false;
+    let contador = 0;
 
-    while (!movimientoOponente) {
+    while (!movimientoOponente && contador <= 8) {
         let posY = Math.floor(Math.random() * 3);
         let posX = Math.floor(Math.random() * 3);
-
-        if ()
-
 
         if (!mapa[posY][posX].classList.contains("X") && !mapa[posY][posX].classList.contains("O")) {
             mapa[posY][posX].classList.add("O");
             movimientoOponente = true;
         }
+        contador++;
     }
+
+    comprobarGanador();
 }
