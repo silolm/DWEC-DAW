@@ -19,10 +19,15 @@ function crearMapa() {
 
 crearMapa();
 
+function reseteoMapa() {
+    alert('Ganaste');
+    document.querySelector('.tablero').innerHTML = '';
+    crearMapa();
+}
+
 function comprobarGanador() {
 
     //HORIZONTAL
-
     for (let i = 0; i < mapa.length; i++) {
         let contadorX = 0;
         let contadorO = 0;
@@ -34,19 +39,15 @@ function comprobarGanador() {
                 contadorX++;
 
             if (contadorX === 3) {
-                alert('Ganaste');
-                document.querySelector('.tablero').innerHTML = '';
-                crearMapa();
+                reseteoMapa();
             } else if (contadorO === 3) {
-                alert('CPU WIN');
-                document.querySelector('.tablero').innerHTML = '';
-                crearMapa();
-            }
+                reseteoMapa();
+            } else if ((contadorO + contadorX - mapa.length) < 2)
+                reseteoMapa();
         }
     }
 
     //VERTICAL
-
     for (let i = 0; i < mapa.length; i++) {
         let contadorX = 0;
         let contadorO = 0;
@@ -58,13 +59,9 @@ function comprobarGanador() {
                 contadorX++;
 
             if (contadorX === 3) {
-                alert('Ganaste');
-                document.querySelector('.tablero').innerHTML = '';
-                crearMapa();
+                reseteoMapa();
             } else if (contadorO === 3) {
-                alert('CPU WIN');
-                document.querySelector('.tablero').innerHTML = '';
-                crearMapa();
+                reseteoMapa();
             }
         }
     }
@@ -80,13 +77,9 @@ function comprobarGanador() {
             contadorXDiagX++;
 
         if (contadorXDiagX === 3) {
-            alert('Ganaste');
-            document.querySelector('.tablero').innerHTML = '';
-            crearMapa();
+            reseteoMapa();
         } else if (contadorXDiagO === 3) {
-            alert('CPU WIN');
-            document.querySelector('.tablero').innerHTML = '';
-            crearMapa();
+            reseteoMapa();
         }
 
     }
@@ -101,13 +94,9 @@ function comprobarGanador() {
             contadorXDiagX++;
 
         if (contadorXDiagX === 3) {
-            alert('Ganaste');
-            document.querySelector('.tablero').innerHTML = '';
-            crearMapa();
+            reseteoMapa();
         } else if (contadorXDiagO === 3) {
-            alert('CPU WIN');
-            document.querySelector('.tablero').innerHTML = '';
-            crearMapa();
+            reseteoMapa();
         }
     }
 
