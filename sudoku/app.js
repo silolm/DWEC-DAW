@@ -31,17 +31,14 @@ function crearMapa() {
                 }
             });
             div.classList.add('casilla');
- 
+
             div.innerText = 'i: ' + i + "\n j: " + j; //añadir sudoku a las posiciones del tablero;
             juego.appendChild(div);
-
-
         }
     }
 }
 
 function comprobar3x3(numero, posY, posX) {
-
     while (posY % 3 != 0) {
         posY--;
     }
