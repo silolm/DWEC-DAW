@@ -21,13 +21,22 @@ function crearMapa() {
             let div = document.createElement('div');
             div.addEventListener('click', () => {
                 div.contentEditable = true;
-                let numero = document.getElementsByTagName('div')[2].innerText;
+                let posicionActual = 0;
 
-                if (/^[1-9]$/.test(numero))
+                if (i === 0 && j === 0)
+                    posicionActual = (i * j) + 2;
+                else if (i === 0 || j === 0) {
+                    i = 1; j = 1;
+                    posicionActual = (i * j) + 2;
+                }
+
+                div = document.getElementsByTagName('div')[posicionActual].innerText;
+
+                if (/^[1-9]$/.test(div))
                     console.log("true");
                 else {
-                    console.log('polla');
-                    console.log(numero);
+                    alert(div + ' incorrecto');
+                    console.log(div);
                 }
             });
             div.classList.add('casilla');
