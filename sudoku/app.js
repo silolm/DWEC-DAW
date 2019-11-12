@@ -19,39 +19,34 @@ function crearMapa() {
     for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
             let div = document.createElement('div');
-            div.addEventListener('click', () => {
-                div.contentEditable = true;
-                let posicionActual = 0;
-
-                if (i === 0 && j === 0)
-                    posicionActual = (i * j) + 2;
-                else if (i === 0 || j === 0) {
-                    i = 1; j = 1;
-                    posicionActual = (i * j) + 2;
-                }
-
-                div = document.getElementsByTagName('div')[posicionActual].innerText;
-
-                if (/^[1-9]$/.test(div))
-                    console.log("true");
-                else {
-                    alert(div + ' incorrecto');
-                    console.log(div);
-                }
-            });
+            div.setAttribute("data", i + "" + j);
+            div.addEventListener('click', guardarDiv);
             div.classList.add('casilla');
 
-            div.innerText = 'i: ' + i + "\n j: " + j; //añadir sudoku a las posiciones del tablero;
             juego.appendChild(div);
         }
     }
 }
 
+function guardarDiv() {
+    let div = this.innerText;
+
+    this.contentEditable = true;
+
+    if (/^[1-9]$/.test(div))
+        console.log("true");
+    else {
+        alert(div + ' incorrecto');
+        console.log(div);
+    }
+}
+
+
 function comprobar3x3(numero, posY, posX) {
-    while (posY % 3 != 0) {
+    while (posY % 3 !== 0) {
         posY--;
     }
-    while (posittionJ % 3 != 0) {
+    while (posX % 3 !== 0) {
         posX--;
     }
 
