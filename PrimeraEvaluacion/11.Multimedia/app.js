@@ -1,6 +1,7 @@
 let video;
 let off;
 let mute;
+let reproductor;
 
 function iniciar() {
     if (off) {
@@ -29,14 +30,15 @@ function refresco() {
     video.load();
 }
 
-function bajarVol() {
-    video.volume;
+function volumen(ev) {
+   reproductor.volume = ev.currentTarget.value;
 }
 
 function init() {
     video = document.querySelector('video');
     off = true;
     mute = false;
+    reproductor = document.getElementById('reproductor');
 
     document.querySelector('#silenciar').addEventListener("click", mutear);
 
@@ -48,10 +50,7 @@ function init() {
 
     document.querySelector('#reiniciar').addEventListener("click", refresco);
 
-    document.querySelector('#bajarVol').addEventListener("click", bajarVol);
-
-    document.querySelector('#subirVol').addEventListener("click", subirVol);
-
+    document.querySelector('#slider').addEventListener("change", volumen);
 }
 
 window.onload = init;
