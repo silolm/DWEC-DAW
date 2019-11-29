@@ -3,30 +3,7 @@
     grid-template-columns: repeat(6, 1fr);
 }
 
-#silenciar {
-
-}
-
-#restar10segundos {
-
-}
-
-#playPause {
-
-}
-
-#sumar10segundos {
-
-}
-
-#reiniciar {
-
-}
-
-#bajarVol {
-
-}
-
-#subirVol {
-
+#reproductor{
+    width: 100%;
+    height: 500px;
 }
