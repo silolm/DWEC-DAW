@@ -7,3 +7,21 @@
     width: 100%;
     height: 500px;
 }
+
+.anuncio{
+    background-color: red;
+    height: 300px;
+    width: 400px;
+    position: absolute;
+    top: 15%;
+    left: 38%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#contenedor{
+    z-index: 6;
+    background-color: lime;
+}

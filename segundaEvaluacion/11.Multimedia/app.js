@@ -31,7 +31,14 @@ function refresco() {
 }
 
 function volumen(ev) {
-   reproductor.volume = ev.currentTarget.value;
+    reproductor.volume = ev.currentTarget.value;
+}
+
+function anuncio() {
+    for (const noneElement of document.querySelector('#botonera')) {
+
+    }
+
 }
 
 function init() {
@@ -51,6 +58,10 @@ function init() {
     document.querySelector('#reiniciar').addEventListener("click", refresco);
 
     document.querySelector('#slider').addEventListener("change", volumen);
+
+    document.querySelector('#botonera').style.display = 'none';
+    
+    anuncio();
 }
 
 window.onload = init;
