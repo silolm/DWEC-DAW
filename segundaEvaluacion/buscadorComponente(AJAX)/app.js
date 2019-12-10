@@ -1,6 +1,6 @@
 function consulta(element) {
     // Obtener la instancia del objeto XMLHttpRequest
-    peticion_http = new XMLHttpRequest();
+    let peticion_http = new XMLHttpRequest();
 
     // Preparar la función de respuesta
     peticion_http.onreadystatechange = mostrar;
@@ -8,6 +8,7 @@ function consulta(element) {
     // Realizar petición HTTP
     peticion_http.open('GET',
         'http://www.omdbapi.com/?s=' + element + '&apikey=cbe010a6', true);
+
 
     //Datos a enviar al servidor en caso del método POST
     peticion_http.send(null);
@@ -17,20 +18,20 @@ function consulta(element) {
         let padre;
 
         try {
-            if (peticion_http.readyState === 4 && peticion_http.status === 200)
-                json = JSON.parse(peticion_http.responseText);
-            else
-                throw "ERROR TOTAL";
-
+            if (peticion_http.readyState === 4) {
+                if (peticion_http.status === 200)
+                    json = JSON.parse(peticion_http.responseText);
+                else throw("ERROR TOTAL");
+            }
         } catch (err) {
             console.error("ERROR: " + err);
             return;
         }
 
         padre = document.getElementById('resultados');
-        padre.innerHTML= '';
+        padre.innerHTML = '';
 
-        if (json.Search === undefined) return;
+        if (json === undefined) return;
 
         for (let i = 0; i < 5; i++) {
             let hijo = document.createElement('a');
