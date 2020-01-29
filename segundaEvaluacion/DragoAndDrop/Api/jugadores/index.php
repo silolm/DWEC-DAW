@@ -26,8 +26,8 @@ $jugadores = [];
 while ($fila = mysqli_fetch_array($result)) {
     $jugador = [[
         "Nombre" => $fila[1],
-        "Altura" => $fila[5],
-        "Peso" => $fila[6]
+        "Altura" => $fila[3],
+        "Peso" => $fila[4]
     ]];
 
     $jugadores = array_merge($jugadores, $jugador);
