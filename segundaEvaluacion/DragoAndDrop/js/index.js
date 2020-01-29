@@ -52,19 +52,21 @@ async function listaEquipos() {
         option.innerText = element;
         select.appendChild(option);
     });
+
+    await listaJugadores();
 }
 
 async function listaJugadores() {
     let contenedor = document.getElementById('div1');
     contenedor.innerHTML = ``;
-    let selector = document.getElementById('selectEquipos').value;
+    let selector = document.querySelector('select').value;
     let jugadores = await getJugadores(selector);
 
     jugadores.forEach(element => {
         let div = document.createElement('div');
         div.classList.add('drag1');
         div.id = element.Nombre;
-        div.setAttribute('draggable', true);
+        div.setAttribute('draggable', 'true');
         div.addEventListener('dragstart', drag);
         div.innerText = element.Nombre;
         contenedor.appendChild(div);
@@ -73,6 +75,7 @@ async function listaJugadores() {
 
 function init() {
     loadListeners();
+
     listaEquipos();
 }
 

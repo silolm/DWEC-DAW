@@ -12,7 +12,7 @@ $basedatos = "nba";
 $consulta = "SELECT * FROM jugadores";
 
 if (isset ($_GET["equipo"]))
-$consulta = $consulta . " WHERE Nombre_equipo LIKE " . "'" . $_GET["equipo"] ."'";
+    $consulta = $consulta . " WHERE Nombre_equipo LIKE " . "'" . $_GET["equipo"] . "'";
 
 # Crear conexión
 $conn = mysqli_connect($servidor, $username, $password, $basedatos);
