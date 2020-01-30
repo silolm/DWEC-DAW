@@ -28,14 +28,14 @@ function loadListeners() {
     document.querySelector('select').addEventListener("change", listaJugadores);
 }
 
-function getEquipos() {
-    return fetch("http://localhost/DragoAndDrop/Api/equipos").
-    then(resultados => resultados.json());
+async function getEquipos() {
+    const resultados = await fetch("http://localhost/DragoAndDrop/Api/equipos");
+    return await resultados.json();
 }
 
-function getJugadores(equipo) {
-    return fetch(`http://localhost/DragoAndDrop/Api/jugadores?equipo=${equipo}`).
-    then(resultados => resultados.json());
+async function getJugadores(equipo) {
+    const resultados = await fetch(`http://localhost/DragoAndDrop/Api/jugadores?equipo=${equipo}`);
+    return await resultados.json();
 }
 
 async function listaEquipos() {
@@ -75,7 +75,6 @@ async function listaJugadores() {
 
 function init() {
     loadListeners();
-
     listaEquipos();
 }
 

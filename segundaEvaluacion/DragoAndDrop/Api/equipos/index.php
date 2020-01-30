@@ -5,8 +5,8 @@
 // $basedatos = "nba";
 
 $servidor = "127.0.0.1";
-$username = "mario";
-$password = "m1234";
+$username = "root";
+$password = "";
 $basedatos = "nba";
 
 $consulta = "SELECT * FROM equipos";
