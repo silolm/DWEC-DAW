@@ -4,12 +4,17 @@
 // $password = "Holamundo66";
 // $basedatos = "nba";
 
+
 $servidor = "127.0.0.1";
-$username = "root";
-$password = "";
+$username = "mario";
+$password = "m1234";
 $basedatos = "nba";
 
-$consulta = "SELECT * FROM jugadores";
+$consulta="UPDATE jugadores SET nombreEqquipo = ".$_POST["nombreEquipo"]." WHERE idJugador = ".$_POST['idJugador'];
+
+
+//$consulta = "SELECT * FROM jugadores";
+
 
 if (isset ($_GET["equipo"]))
     $consulta = $consulta . " WHERE Nombre_equipo LIKE " . "'" . $_GET["equipo"] . "'";

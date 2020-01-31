@@ -15,6 +15,7 @@ function drop(ev) {
     //Guardamos el elemento, llamado "text" en una variable.
     let data = ev.dataTransfer.getData("text");
 
+    setJugadores(1);
     //Colgamos el elemeto arrastrado y soltado en el nuevo destino.
     ev.target.appendChild(document.getElementById(data));
 }
@@ -36,6 +37,24 @@ async function getEquipos() {
 async function getJugadores(equipo) {
     const resultados = await fetch(`http://localhost/DragoAndDrop/Api/jugadores?equipo=${equipo}`);
     return await resultados.json();
+}
+
+function setJugadores(jugador) {
+    let datos = {
+        jugador: 123
+    };
+
+    fetch(`http://localhost/DragoAndDrop/Api/jugadores/index.php`, {
+        method: 'POST',
+        body: JSON.stringify(datos),
+        headers: {
+            "content-type": "application/json"
+        }
+    }).then(function(response) {
+        return response;
+    }).then(function(respuesta) {
+        console.log(respuesta);
+    });
 }
 
 async function listaEquipos() {
@@ -72,6 +91,7 @@ async function listaJugadores() {
         contenedor.appendChild(div);
     });
 }
+
 
 function init() {
     loadListeners();
