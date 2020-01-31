@@ -4,17 +4,12 @@
 // $password = "Holamundo66";
 // $basedatos = "nba";
 
-
 $servidor = "127.0.0.1";
-$username = "mario";
-$password = "m1234";
+$username = "root";
+$password = "";
 $basedatos = "nba";
 
-$consulta="UPDATE jugadores SET nombreEqquipo = ".$_POST["nombreEquipo"]." WHERE idJugador = ".$_POST['idJugador'];
-
-
-//$consulta = "SELECT * FROM jugadores";
-
+$consulta = "SELECT * FROM jugadores";
 
 if (isset ($_GET["equipo"]))
     $consulta = $consulta . " WHERE Nombre_equipo LIKE " . "'" . $_GET["equipo"] . "'";
@@ -31,10 +26,8 @@ $jugadores = [];
 while ($fila = mysqli_fetch_array($result)) {
     $jugador = [[
         "Nombre" => $fila[1],
-        "Altura" => $fila[3],
-        "Peso" => $fila[4]
+        "Equipo" => $fila[6]
     ]];
-
     $jugadores = array_merge($jugadores, $jugador);
 }
 

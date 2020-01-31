@@ -9,7 +9,13 @@ $username = "root";
 $password = "";
 $basedatos = "nba";
 
-$consulta = "SELECT * FROM equipos";
+//$consulta="UPDATE jugadores SET Nombre_equipo = ".$_POST["equipo"]." WHERE Nombre = ".$_POST['jugador'];
+$consulta="UPDATE jugadores SET Nombre_equipo = "."Lakers"." WHERE Nombre =". "Amparo";
+
+if (isset ($_POST["jugador"])){
+    echo "joderrrr";
+    $consulta;
+}  
 
 # Crear conexión
 $conn = mysqli_connect($servidor, $username, $password, $basedatos);
@@ -19,17 +25,5 @@ if (!$conn)
 
 $result = mysqli_query($conn, $consulta);
 
-$equipos = [];
-while ($fila = mysqli_fetch_array($result)) {
-    $equipo = [[
-        "Nombre" => $fila[0]
-    ]];
-
-    $equipos = array_merge($equipos, $equipo);
-}
-
-mysqli_free_result($result);
 mysqli_close($conn);
-
-echo json_encode($equipos);
 ?>
