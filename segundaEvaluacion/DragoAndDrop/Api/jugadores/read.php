@@ -1,7 +1,10 @@
 <?php
 include ("../config/config.php");
 
-$consulta = "SELECT * FROM equipos";
+$consulta = "SELECT * FROM jugadores";
+
+if (isset ($_GET["equipo"]))
+    $consulta = $consulta . " WHERE Nombre_equipo LIKE " . "'" . $_GET["equipo"] . "'";
 
 # Crear conexión
 $conn = mysqli_connect($servidor, $username, $password, $basedatos);
@@ -11,17 +14,17 @@ if (!$conn)
 
 $result = mysqli_query($conn, $consulta);
 
-$equipos = [];
+$jugadores = [];
 while ($fila = mysqli_fetch_array($result)) {
-    $equipo = [[
-        "Nombre" => $fila[0]
+    $jugador = [[
+        "Nombre" => $fila[1],
+        "Equipo" => $fila[6]
     ]];
-
-    $equipos = array_merge($equipos, $equipo);
+    $jugadores = array_merge($jugadores, $jugador);
 }
 
 mysqli_free_result($result);
 mysqli_close($conn);
 
-echo json_encode($equipos);
+echo json_encode($jugadores);
 ?>

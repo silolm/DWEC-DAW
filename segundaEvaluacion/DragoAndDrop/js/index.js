@@ -34,24 +34,23 @@ async function getEquipos() {
 }
 
 async function getJugadores(equipo) {
-    const resultados = await fetch(`http://localhost/DragoAndDrop/Api/jugadores?equipo=${equipo}`);
+    const resultados = await fetch(`http://localhost/DragoAndDrop/Api/jugadores/read.php?equipo=${equipo}`);
     return await resultados.json();
 }
 
-function setJugadores(jugador) {
-//    let datos = {
-//     nombre: jugador
-//    };
-      (async () => {
-        const rawResponse = await fetch(`http://localhost/DragoAndDrop/Api/jugadores/res-post.php`, {
-          method: 'POST',
-          body: JSON.stringify(jugador),
-          "Access-Control-Allow-Origin" : "*", 
-          "Access-Control-Allow-Credentials" : true
-        });
-        const content = await rawResponse.json();
-        console.log(content);
-      })();
+function setJugadores(equipo, jugador) {
+let datos = {
+    equipo: equipo,
+    jugador: jugador
+};
+    (async () => {
+    const rawResponse = await fetch(`http://localhost/DragoAndDrop/Api/jugadores/update.php`, {
+        method: 'POST',
+        body: JSON.stringify(datos),
+    });
+    const content = await rawResponse.json();
+    console.log(content);
+    })();
 }
 
 async function listaEquipos() {

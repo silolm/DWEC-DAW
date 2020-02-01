@@ -1,7 +1,12 @@
 <?php
 include ("../config/config.php");
 
-$consulta = "SELECT * FROM equipos";
+$datos = json_decode(file_get_contents("php://input"));
+
+$equipo = $datos ->equipo;
+$jugador = $datos ->jugador;
+
+$consulta="UPDATE jugadores SET Nombre_equipo = "."'$equipo'"." WHERE Nombre = "."'$jugador'";
 
 # Crear conexión
 $conn = mysqli_connect($servidor, $username, $password, $basedatos);
@@ -11,17 +16,5 @@ if (!$conn)
 
 $result = mysqli_query($conn, $consulta);
 
-$equipos = [];
-while ($fila = mysqli_fetch_array($result)) {
-    $equipo = [[
-        "Nombre" => $fila[0]
-    ]];
-
-    $equipos = array_merge($equipos, $equipo);
-}
-
-mysqli_free_result($result);
 mysqli_close($conn);
-
-echo json_encode($equipos);
 ?>
