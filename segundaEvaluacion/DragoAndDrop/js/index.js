@@ -48,9 +48,13 @@ let datos = {
         method: 'POST',
         body: JSON.stringify(datos),
     });
-    const content = await rawResponse.json();
-    console.log(content);
+    const content =  rawResponse;
     })();
+}
+
+function comprobarNombre() {
+    let jugador = document.getElementsByClassName('drag1')[0].id;
+    console.log(jugador);
 }
 
 async function listaEquipos() {
@@ -72,8 +76,10 @@ async function listaEquipos() {
 }
 
 async function listaJugadores() {
-    let contenedor = document.getElementById('div1');
-    contenedor.innerHTML = ``;
+    let contenedorIzquierda = document.getElementById('div1');
+    contenedorIzquierda.innerHTML = ``;
+    let contenedorDerecha = document.getElementById('div1');
+    contenedorDerecha.innerHTML = ``;
     let selector = document.querySelector('select').value;
     let jugadores = await getJugadores(selector);
 
@@ -84,10 +90,9 @@ async function listaJugadores() {
         div.setAttribute('draggable', 'true');
         div.addEventListener('dragstart', drag);
         div.innerText = element.Nombre;
-        contenedor.appendChild(div);
+        contenedorIzquierda.appendChild(div);
     });
 }
-
 
 function init() {
     loadListeners();

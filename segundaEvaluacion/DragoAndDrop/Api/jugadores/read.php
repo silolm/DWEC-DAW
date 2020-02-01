@@ -1,5 +1,5 @@
 <?php
-include ("../config/config.php");
+include '../config/conexion.php';
 
 $consulta = "SELECT * FROM jugadores";
 
