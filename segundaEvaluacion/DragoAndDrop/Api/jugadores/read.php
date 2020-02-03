@@ -3,7 +3,7 @@ include '../config/conexion.php';
 
 $consulta = "SELECT * FROM jugadores";
 
-if (isset ($_GET["equipo"]))
+if (isset($_GET["equipo"]))
     $consulta = $consulta . " WHERE Nombre_equipo LIKE " . "'" . $_GET["equipo"] . "'";
 
 # Crear conexión
@@ -27,4 +27,3 @@ mysqli_free_result($result);
 mysqli_close($conn);
 
 echo json_encode($jugadores);
-?>
