@@ -17,6 +17,7 @@ $result = mysqli_query($conn, $consulta);
 $jugadores = [];
 while ($fila = mysqli_fetch_array($result)) {
     $jugador = [[
+        "Codigo" => $fila[0],
         "Nombre" => $fila[1],
         "Equipo" => $fila[6]
     ]];

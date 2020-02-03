@@ -1,6 +1,3 @@
-let equipo = document.getElementsByTagName('equipo');
-let jugador = document.getElementsByTagName('nombre');
-
 function allowDrop(ev) {
     //Permitir que reciba algún elemento
     ev.preventDefault();
@@ -18,6 +15,10 @@ function drop(ev) {
     //Guardamos el elemento, llamado "text" en una variable.
     let data = ev.dataTransfer.getData("text");
 
+    let selector = document.querySelector('select');
+    let equipo = selector.options[selector.selectedIndex].value;
+    setJugadores(equipo, data);
+
     //Colgamos el elemeto arrastrado y soltado en el nuevo destino.
     ev.target.appendChild(document.getElementById(data));
 }
@@ -28,8 +29,13 @@ function loadListeners() {
     document.getElementById('div2').addEventListener('drop', drop);
     document.getElementById('div1').addEventListener('drop', drop);
 
-    document.getElementById('selectEquipos').addEventListener("change", listaJugadores);
-    document.getElementById('selectEquipos2').addEventListener("change", listaJugadores);
+    let left = document.getElementById('selectEquipos');
+    let contenedorIzquierda = document.getElementById('div1');
+    left.addEventListener("change", () => eventosCaja(left.options[left.selectedIndex].value, contenedorIzquierda));
+
+    let right = document.getElementById('selectEquipos2');
+    let contenedorDerecha = document.getElementById('div2');
+    right.addEventListener("change", () => eventosCaja(right.options[right.selectedIndex].value, contenedorDerecha));
 }
 
 async function getEquipos() {
@@ -48,11 +54,10 @@ function setJugadores(equipo, jugador) {
         jugador: jugador
     };
     (async () => {
-        const rawResponse = await fetch(`http://localhost/DragoAndDrop/Api/jugadores/update.php`, {
+        await fetch(`http://localhost/DragoAndDrop/Api/jugadores/update.php`, {
             method: 'POST',
             body: JSON.stringify(datos),
         });
-        const content = rawResponse;
     })();
 }
 
@@ -84,22 +89,34 @@ async function listaJugadores() {
     let contenedorDerecha = document.getElementById('div2');
     contenedorDerecha.innerHTML = ``;
     let selector = document.querySelector('select').value;
-    let jugadores = await getJugadores(selector);
 
-    jugadores.forEach(element => {
-        let divL = document.createElement('div');
-        divL.innerHTML = `
-        <div class="drag1" nombre="${element.Nombre}" equipo="${element.Equipo}" draggable="true">${element.Nombre}</div>
-        `;
-        let divR = document.createElement('div');
-        divR.innerHTML = `
-        <div class="drag2" draggable="true">${element.Nombre}</div>
-        `;
-        divL.addEventListener('dragstart', drag);
-        divR.addEventListener('dragstart', drag);
-        contenedorIzquierda.appendChild(divL);
-        contenedorDerecha.appendChild(divR);
+    let jugadores = await getJugadores(selector);
+    contenedorIzquierda.innerHTML = insertarJugadores(jugadores);
+    contenedorDerecha.innerHTML = insertarJugadores(jugadores);
+
+    document.querySelectorAll('.drag').forEach((divDrag) => {
+        divDrag.addEventListener('dragstart', drag);
     });
+}
+
+async function eventosCaja(valor, contenedor) {
+    contenedor.innerHTML = '';
+    let jugadores = await getJugadores(valor);
+    contenedor.innerHTML = insertarJugadores(jugadores);
+
+    contenedor.querySelectorAll('.drag').forEach((divDrag) => {
+        divDrag.addEventListener('dragstart', drag);
+    });
+}
+
+function insertarJugadores(jugadores) {
+    let html = '';
+    jugadores.forEach(element => {
+        html += `    
+            <div class="drag" id="${element.Codigo}" equipo="${element.Equipo}" draggable="true">${element.Nombre}</div>
+        `;
+    });
+    return html;
 }
 
 function init() {
