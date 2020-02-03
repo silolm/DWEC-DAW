@@ -15,7 +15,7 @@ function drop(ev) {
     //Guardamos el elemento, llamado "text" en una variable.
     let data = ev.dataTransfer.getData("text");
 
-    let selector = document.querySelector('select');
+    let selector = document.getElementById('selectEquipos2');
     let equipo = selector.options[selector.selectedIndex].value;
     setJugadores(equipo, data);
 
@@ -48,17 +48,16 @@ async function getJugadores(equipo) {
     return await resultados.json();
 }
 
-function setJugadores(equipo, jugador) {
+async function setJugadores(equipo, codigo) {
     let datos = {
         equipo: equipo,
-        jugador: jugador
+        codigo: codigo
     };
-    (async () => {
-        await fetch(`http://localhost/DragoAndDrop/Api/jugadores/update.php`, {
-            method: 'POST',
-            body: JSON.stringify(datos),
-        });
-    })();
+    await fetch(`http://localhost/DragoAndDrop/Api/jugadores/update.php`, {
+        method: 'POST',
+        body: JSON.stringify(datos),
+    });
+    
 }
 
 async function listaEquipos() {
@@ -91,8 +90,8 @@ async function listaJugadores() {
     let selector = document.querySelector('select').value;
 
     let jugadores = await getJugadores(selector);
-    contenedorIzquierda.innerHTML = insertarJugadores(jugadores);
-    contenedorDerecha.innerHTML = insertarJugadores(jugadores);
+    contenedorIzquierda.innerHTML = insertarHtml(jugadores);
+    contenedorDerecha.innerHTML = insertarHtml(jugadores);
 
     document.querySelectorAll('.drag').forEach((divDrag) => {
         divDrag.addEventListener('dragstart', drag);
@@ -102,14 +101,14 @@ async function listaJugadores() {
 async function eventosCaja(valor, contenedor) {
     contenedor.innerHTML = '';
     let jugadores = await getJugadores(valor);
-    contenedor.innerHTML = insertarJugadores(jugadores);
+    contenedor.innerHTML = insertarHtml(jugadores);
 
     contenedor.querySelectorAll('.drag').forEach((divDrag) => {
         divDrag.addEventListener('dragstart', drag);
     });
 }
 
-function insertarJugadores(jugadores) {
+function insertarHtml(jugadores) {
     let html = '';
     jugadores.forEach(element => {
         html += `    

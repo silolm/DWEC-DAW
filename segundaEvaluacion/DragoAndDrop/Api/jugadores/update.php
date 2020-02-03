@@ -6,7 +6,7 @@ $datos = json_decode(file_get_contents("php://input"));
 $equipo = $datos->equipo;
 $codigo = $datos->codigo;
 
-echo $consulta = "UPDATE jugadores SET Nombre_equipo = " . "'$equipo'" . " WHERE codigo = " . "'$codigo'";
+$consulta = "UPDATE jugadores SET Nombre_equipo = " . "'$equipo'" . " WHERE codigo = " . $codigo;
 
 # Crear conexión
 $conn = mysqli_connect($servidor, $username, $password, $basedatos);
